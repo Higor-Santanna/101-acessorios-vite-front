@@ -5,7 +5,7 @@ const LoginAndRegister = () => {
         <div className="flex items-center gap-2 max-lg:hidden">
             <IoPerson className="text-2xl" />
             <div className="flex">
-                <p className="text-base"><a href="" className=" hover:underline hover:text-blue-500">Entre</a> / <a href="" className=" hover:underline hover:text-blue-500">Cadastre-se</a> ou <a href="" className=" hover:underline hover:text-blue-500">Entre como usuário demo</a></p>
+                <p className="text-base"><a href="" className=" hover:underline hover:text-blue-500">Entre</a> / <a href="/criar-conta" className=" hover:underline hover:text-blue-500">Cadastre-se</a> ou <a href="" className=" hover:underline hover:text-blue-500">Entre como usuário demo</a></p>
             </div>
         </div>
     )
