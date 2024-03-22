@@ -1,5 +1,8 @@
 import { useForm } from "react-hook-form"
 import { z } from "zod"
+import { zodResolver } from "@hookform/resolvers/zod"
+// import axios from "axios"
+// import { useJwt } from "react-jwt"
 
 const schemaForma = z.object({
     userData: z.object({
@@ -19,27 +22,56 @@ const schemaForma = z.object({
         cpf: z.string()
             .min(11, "CPF inválido")
             .max(11, "CPF inválido"),
-        phone: z.string()
+        phoneNumber: z.string()
             .min(10, "Número de telefone inválido")
             .max(11, "Número de telefone inválido"),
         confirmPassword: z.string()
             .min(8, "A senha deve ter no mínimo 8 caracteres")
             .max(16, "A senha não pode passar de 16 caracteres"),
         rg: z.string()
-            .min(9, "RG inválido")
-            .max(9, "RG inválido"),
-        birth: z.string()
-            .min(1, "Data de nascimento errada")
-            .max(8, "Data de nascimento errada"),
     })
 })
 
-const UserRegister = () => {
-    const { register, handleSubmit } = useForm()
+type FormProps = z.infer<typeof schemaForma>
 
-    const handleFormSubmit = (data: any) => {
-        console.log(data)
-    }
+const UserRegister = () => {
+    const { register, handleSubmit } = useForm<FormProps>({
+        criteriaMode: 'all',
+        mode: 'all',
+        resolver: zodResolver(schemaForma),
+        defaultValues: {
+            userData: {
+                name:'',
+                lastName:'',
+                email:'',
+                password:'',
+                confirmPassword:'',
+                cpf:'',
+                rg:'',
+                phoneNumber:''
+            }
+        }
+    })
+
+    // const handleFormSubmit = async (data: FormProps) => {
+    //     try {
+    //         const token = generateJWTToken(data.userData.email);
+    //         const response = await axios.post('https://101acessorios-api.onrender.com/user', data.userData, {
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //                 'Authorization': `Bearer ${token}`
+    //             }
+    //         });
+    //         console.log(response.data);
+    //     } catch (error) {
+    //         console.error('Erro ao enviar requisição:', error);
+    //     }+
+    // }
+
+    // const generateJWTToken = (email: string) => {
+    //     const secretKey = 'sua_chave_secreta';
+    //     return useJwt({ email }, secretKey, { expiresIn: '1h' }); // Token expira em 1 hora
+    // }
 
     return (
         <>
@@ -47,40 +79,35 @@ const UserRegister = () => {
             <form onSubmit={handleSubmit(handleFormSubmit)}>
                 <div>
                     <label>Nome*</label>
-                    <input {...register('name')} type="text"
+                    <input {...register('userData.name')} type="text"
                         placeholder="Nome" required />
                     <label>Sobrenome*</label>
-                    <input {...register('last-name')} type="text"
+                    <input {...register('userData.lastName')} type="text"
                         placeholder="Sobrenome" required />
                 </div>
                 <br />
                 <div>
                     <label>CPF*</label>
-                    <input {...register('cpf')} type="number" placeholder="CPF" required maxLength={11} />
+                    <input {...register('userData.cpf')} type="number" placeholder="CPF" required maxLength={11} />
                     <label>RG</label>
-                    <input {...register('rg')} type="number" placeholder="RG" maxLength={7} />
-                </div>
-                <br />
-                <div>
-                    <label>Data de Nascimento*</label>
-                    <input {...register('day')} type="date" placeholder="dia" required />
+                    <input {...register('userData.rg')} type="number" placeholder="RG" maxLength={7} />
                 </div>
                 <br />
                 <div>
                     <label>Celular*</label>
-                    <input {...register('phone-number')} type="number" placeholder="numero do telefone com DDD" required maxLength={11} />
+                    <input {...register('userData.phoneNumber')} type="number" placeholder="numero do telefone com DDD" required maxLength={11} />
                 </div>
                 <br />
                 <div>
                     <label>E-mail*</label>
-                    <input {...register('e-mail')} type="email" placeholder="E-mail" required />
+                    <input {...register('userData.email')} type="email" placeholder="E-mail" required />
                 </div>
                 <br />
                 <div>
                     <label>Senha*</label>
-                    <input {...register('password')} type="password" placeholder="Senha" required />
+                    <input {...register('userData.password')} type="password" placeholder="Senha" required />
                     <label>Confirmar Senha*</label>
-                    <input {...register('confirm-password')} type="password" placeholder="Confirma Senha" required />
+                    <input {...register('userData.confirmPassword')} type="password" placeholder="Confirma Senha" required />
                 </div>
                 <br />
                 <button type="submit">Concluir Cadastro</button>
@@ -89,4 +116,4 @@ const UserRegister = () => {
     )
 }
 
-export { UserRegister }
+export { UserRegister}
