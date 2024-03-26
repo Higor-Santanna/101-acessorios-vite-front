@@ -40,11 +40,11 @@ const MenuSandwich = () => {
 
                         <div className="w-full h-1 bg-gray-300 mb-0.5 mt-2"/>
 
-                        <a href="" className="flex gap-1 text-sm items-center px-1 py-2">
+                        <a href="/login" className="flex gap-1 text-sm items-center px-1 py-2">
                             <IoEnterOutline />
                             <p>Acesse sua conta</p>
                         </a>
-                        <a href="" className="flex gap-1 text-sm items-center px-1 py-2">
+                        <a href="/criar-conta" className="flex gap-1 text-sm items-center px-1 py-2">
                             <IoPerson />
                             <p>Criar Conta</p>
                         </a>

@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 // import axios from "axios"
-// import { useJwt } from "react-jwt"
 
 const schemaForma = z.object({
     userData: z.object({
@@ -53,25 +52,9 @@ const UserRegister = () => {
         }
     })
 
-    // const handleFormSubmit = async (data: FormProps) => {
-    //     try {
-    //         const token = generateJWTToken(data.userData.email);
-    //         const response = await axios.post('https://101acessorios-api.onrender.com/user', data.userData, {
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //                 'Authorization': `Bearer ${token}`
-    //             }
-    //         });
-    //         console.log(response.data);
-    //     } catch (error) {
-    //         console.error('Erro ao enviar requisição:', error);
-    //     }+
-    // }
-
-    // const generateJWTToken = (email: string) => {
-    //     const secretKey = 'sua_chave_secreta';
-    //     return useJwt({ email }, secretKey, { expiresIn: '1h' }); // Token expira em 1 hora
-    // }
+    const handleFormSubmit = (data: any) => {
+        console.log(data)   
+    }
 
     return (
         <>
