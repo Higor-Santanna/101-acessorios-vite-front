@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useState } from "react"
 // import axios from "axios"
 
 const schemaForma = z.object({
@@ -34,44 +35,60 @@ const schemaForma = z.object({
 type FormProps = z.infer<typeof schemaForma>
 
 const UserRegister = () => {
-    const { register, handleSubmit } = useForm<FormProps>({
+    const [ user, setUser ] = useState(null)
+
+    const { register, handleSubmit, formState: { errors } } = useForm<FormProps>({
         criteriaMode: 'all',
         mode: 'all',
         resolver: zodResolver(schemaForma),
         defaultValues: {
             userData: {
-                name:'',
-                lastName:'',
-                email:'',
-                password:'',
-                confirmPassword:'',
-                cpf:'',
-                rg:'',
-                phoneNumber:''
+                name: '',
+                lastName: '',
+                email: '',
+                password: '',
+                confirmPassword: '',
+                cpf: '',
+                rg: '',
+                phoneNumber: ''
             }
         }
     })
 
     const handleFormSubmit = (data: any) => {
-        console.log(data)   
+        console.log(data)
+        setUser(data)
     }
 
     return (
         <>
-            <h2>Novo Cadastro</h2>
+            {user == null ? (
+                <div>
+                    <h2>Novo Cadastro</h2>
             <form onSubmit={handleSubmit(handleFormSubmit)}>
                 <div>
                     <label>Nome*</label>
                     <input {...register('userData.name')} type="text"
                         placeholder="Nome" required />
+                    {errors.userData?.name?.message && (
+                        <p>Nome inválido</p>
+                    )}
+
                     <label>Sobrenome*</label>
                     <input {...register('userData.lastName')} type="text"
                         placeholder="Sobrenome" required />
+                    {errors.userData?.lastName?.message && (
+                        <p>SobreNome inválido</p>
+                    )}
                 </div>
                 <br />
                 <div>
                     <label>CPF*</label>
                     <input {...register('userData.cpf')} type="number" placeholder="CPF" required maxLength={11} />
+                    {errors.userData?.cpf?.message && (
+                        <p>CPF inválido</p>
+                    )}
+
                     <label>RG</label>
                     <input {...register('userData.rg')} type="number" placeholder="RG" maxLength={7} />
                 </div>
@@ -79,24 +96,44 @@ const UserRegister = () => {
                 <div>
                     <label>Celular*</label>
                     <input {...register('userData.phoneNumber')} type="number" placeholder="numero do telefone com DDD" required maxLength={11} />
+                    {errors.userData?.phoneNumber?.message && (
+                        <p>Número de telefone inválido</p>
+                    )}
                 </div>
                 <br />
                 <div>
                     <label>E-mail*</label>
                     <input {...register('userData.email')} type="email" placeholder="E-mail" required />
+                    {errors.userData?.email?.message && (
+                        <p>Email inválido</p>
+                    )}
                 </div>
                 <br />
                 <div>
                     <label>Senha*</label>
                     <input {...register('userData.password')} type="password" placeholder="Senha" required />
+                    {errors.userData?.password?.message && (
+                        <p>Senha inválida</p>
+                    )}
+
                     <label>Confirmar Senha*</label>
                     <input {...register('userData.confirmPassword')} type="password" placeholder="Confirma Senha" required />
+                    {errors.userData?.confirmPassword?.message && (
+                        <p>Senha inválida</p>
+                    )}
                 </div>
                 <br />
                 <button type="submit">Concluir Cadastro</button>
             </form>
+                </div>
+            ) : (
+                <div>
+                    <h2>ta funcionando</h2>
+                    <a href="./login">OK</a>
+                </div>
+            )}
         </>
     )
 }
 
-export { UserRegister}
+export { UserRegister }
