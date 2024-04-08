@@ -14,7 +14,7 @@ const schemaForma = z.object({
     })
 })
 
-type FormProps = z.infer<typeof schemaForma> 
+type FormProps = z.infer<typeof schemaForma>
 
 const LoginAccess = () => {
     const { register, handleSubmit } = useForm<FormProps>({
@@ -23,8 +23,8 @@ const LoginAccess = () => {
         resolver: zodResolver(schemaForma),
         defaultValues: {
             loginData: {
-               email:'',
-               password:''
+                email: '',
+                password: ''
             }
         }
     })
@@ -34,25 +34,29 @@ const LoginAccess = () => {
     }
 
     return (
-        <>
-            <h1>Acesse sua Conta</h1>
+        <div className="flex
+        flex-col justify-between items-center h-screen w-screen">
+            <div className="w-full h-20 bg-black"></div>
 
-            <form onSubmit={handleSubmit(handleFormSubmit)}>
-                <div>
-                    <input {...register('loginData.email')} type="text" placeholder="Seu email" required />
-                    <br />
-                    <br />
-                    <input {...register('loginData.password')} type="text" placeholder="Sua senha" required />
+            <div className="flex flex-col gap-5 justify-center items-center">
+                <h1 className="font-semibold text-2xl">Acesse sua Conta</h1>
+
+                <form onSubmit={handleSubmit(handleFormSubmit)} className="flex flex-col w-96 h-60 bg-gray-300 gap-7 items-center justify-center rounded max-sm:w-80">
+
+                    <input {...register('loginData.email')} type="text" placeholder="Seu email" required className="w-80 rounded border border-black bg-gray-300 max-sm:w-52"/>
+
+                    <input {...register('loginData.password')} type="text" placeholder="Sua senha" required className="w-80 rounded border border-black bg-gray-300 max-sm:w-52"/>
+
+                    <button type="submit" className="w-40 h-8 bg-blue-700 rounded text-white font-medium">Entrar</button>
+                </form>
+
+                <div className="flex gap-1">
+                    <p className="text-sm">Não tem uma conta?</p>
+                    <a href="/criar-conta" className="text-sm text-blue-700 hover:underline underline-offset-1 ">Cadastra-se</a>
                 </div>
-
-                <button type="submit">Entrar</button>
-            </form>
-
-                <div>
-                    <p>Não tem uma conta?</p>
-                    <a href="/criar-conta">Cadastra-se</a>
-                </div>
-        </>
+            </div>
+            <div className="w-full h-20 bg-black"></div>
+        </div>
     )
 }
 

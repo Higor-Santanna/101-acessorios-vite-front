@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useState } from "react"
-// import axios from "axios"
 
 const schemaForma = z.object({
     userData: z.object({
@@ -147,9 +146,16 @@ const UserRegister = () => {
                     <div className="w-full h-20 bg-black"></div>
                 </div>
             ) : (
-                <div>
-                    <h2>ta funcionando</h2>
-                    <a href="./login">OK</a>
+                <div className="flex
+                flex-col justify-between items-center h-screen w-screen">
+                    <div className="w-full h-20 bg-black"></div>
+
+                    <div className="flex flex-col items-center w-7/12 max-lg:w-9/12 max-sm:w-11/12 bg-gray-300 rounded py-6 gap-4">
+                        <h2 className="font-semibold text-xl max-sm:px-4">Parabéns sua conta foi criado com sucesso!</h2>
+                        <a href="./login" className="w-40 h-8 bg-blue-700 rounded text-white font-medium flex justify-center items-center">Entre</a>
+                    </div>
+
+                    <div className="w-full h-20 bg-black"></div>
                 </div>
             )}
         </>
