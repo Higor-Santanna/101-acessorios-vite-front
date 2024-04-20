@@ -9,6 +9,7 @@ import { IoPerson } from "react-icons/io5";
 import { IoEnterOutline } from "react-icons/io5";
 import { MdEmojiPeople } from "react-icons/md";
 import { FaStar } from "react-icons/fa";
+import { MenuSandwichDepartments } from "../../../departments/menu-sandwich-departments";
 
 const MenuSandwich = () => {
 
@@ -56,6 +57,11 @@ const MenuSandwich = () => {
                             <FaStar />
                             <p>Meus favoritos</p>
                         </a>
+
+                        <div className="w-full h-1 bg-gray-300 mb-0.5 mt-2"/>
+
+                        <MenuSandwichDepartments />
+
                     </List>
                 </Box>
             </Drawer>

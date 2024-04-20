@@ -21,3 +21,7 @@
   text-decoration: none;
   color: black;
 }
+
+.list-department{
+  @apply w-full h-12 flex  justify-center items-center hover:bg-black hover:text-white;
+}
