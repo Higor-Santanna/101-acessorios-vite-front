@@ -18,9 +18,6 @@ export default {
         'font-size': "text-xl",
         'text-yellow-901': "#ABD832"
       },
-      a: {
-
-      }
     },
   },
   plugins: [],
