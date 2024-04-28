@@ -1,4 +1,5 @@
 import { Departments } from "../../components/departments"
+import { Footer } from "../../components/footer"
 import { Header } from "../../components/header"
 
 const Home = () => {
@@ -6,6 +7,7 @@ const Home = () => {
         <>
           <Header />
           <Departments />
+          <Footer />
         </>
     )
 }
