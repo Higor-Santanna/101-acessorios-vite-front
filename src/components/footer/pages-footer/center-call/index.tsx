@@ -15,7 +15,7 @@ const CenterCall = () => {
             <div className="mb-5 ml-40 text-base text-black font-medium max-md:mx-5">
                 <p>Suporte E-Commerce:</p>
                 <p>WhatsApp: 99 99999-9999</p>
-                <p>E-mail: agrifarm@farm.com.br</p>
+                <p>E-mail: 101acessorios@acess.com.br</p>
             </div>
         </>
     )

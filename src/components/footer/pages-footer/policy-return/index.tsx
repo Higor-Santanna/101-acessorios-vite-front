@@ -3,9 +3,9 @@ const PolicyReturn = () => {
         <>
             <h1 className="text-3xl flex justify-center items-center font-semibold text-black my-7 max-sm:text-2xl max-sm:mx-5">Política de Trocas e Devoluções</h1>
 
-            <p className="mb-5 mx-40 text-base text-black font-medium max-md:mx-5">1 - Garantia de 14 dias após a chegada do produto no cliente;</p>
+            <p className="mb-5 mx-40 text-base text-black font-medium max-md:mx-5">1 - Garantia do fabricante;</p>
 
-            <p className="mb-5 mx-40 text-base text-black font-medium max-md:mx-5">2 - Caso o produto venha avariado ou fora de qualidade enviar uma foto do estado do insumo para o nosso email agrifarm@farm.com.br, juntamente com a nota fiscal do mesmo.</p>
+            <p className="mb-5 mx-40 text-base text-black font-medium max-md:mx-5">2 - Caso o produto venha avariado ou fora de qualidade enviar uma foto do estado do acessório para o nosso email 101acessorios@acess.com.br, juntamente com a nota fiscal do mesmo.</p>
 
             <div>
                 <p className="mb-5 mx-40 text-base text-black font-medium max-md:mx-5">3 - Se o produto for diferente do que você pediu:</p>
